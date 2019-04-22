@@ -1,0 +1,7 @@
+Q. why create font size 15 when request font size 8?
+A:
+	incorerbf_fixedsys size 8x15
+so use
+	incorerbf_vgaoem size 8x8
+
+

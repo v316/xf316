@@ -1,0 +1,65 @@
+diff --git a/configure.in b/configure.in
+index 560071a..d488fc5 100755
+--- a/configure.in
++++ b/configure.in
+@@ -227,13 +227,13 @@ build_misc_savescreen="no"
+ dnl Control related options
+ build_ctrl_static="yes"
+ build_ctrl_button="yes"
+-build_ctrl_sledit="no"
++build_ctrl_sledit="yes"
+ build_ctrl_bidisledit="no"
+-build_ctrl_listbox="no"
++build_ctrl_listbox="yes"
+ build_ctrl_progressbar="yes"
+ build_ctrl_newtoolbar="no"
+ build_ctrl_menubutton="no"
+-build_ctrl_trackbar="no"
++build_ctrl_trackbar="yes"
+ build_ctrl_combobox="no"
+ build_ctrl_propsheet="no"
+ build_ctrl_scrollview="no"
+diff --git a/mgconfig.h b/mgconfig.h
+index 1278bda..c7a12d6 100644
+--- a/mgconfig.h
++++ b/mgconfig.h
+@@ -289,7 +289,7 @@
+ /* #undef _MGCTRL_ICONVIEW */
+ 
+ /* Define if include LISTBOX control */
+-/* #undef _MGCTRL_LISTBOX */
++#define _MGCTRL_LISTBOX 1
+ 
+ /* Define if include LISTVIEW control */
+ /* #undef _MGCTRL_LISTVIEW */
+@@ -316,7 +316,7 @@
+ /* #undef _MGCTRL_SCROLLVIEW */
+ 
+ /* Define if include SLEDIT control */
+-/* #undef _MGCTRL_SLEDIT */
++#define _MGCTRL_SLEDIT 1
+ 
+ /* Define if include SPINBOX control */
+ /* #undef _MGCTRL_SPINBOX */
+@@ -331,7 +331,7 @@
+ /* #undef _MGCTRL_TEXTEDIT_USE_NEW_IMPL */
+ 
+ /* Define if include TRACKBAR control */
+-/* #undef _MGCTRL_TRACKBAR */
++#define _MGCTRL_TRACKBAR 1
+ 
+ /* Define if include TREEVIEW control */
+ /* #undef _MGCTRL_TREEVIEW */
+diff --git a/src/control/Makefile.am b/src/control/Makefile.am
+index 4f77795..df9ebce 100644
+--- a/src/control/Makefile.am
++++ b/src/control/Makefile.am
+@@ -3,7 +3,7 @@ INCLUDES = -I$(abs_top_srcdir)/src/include -I$(abs_top_srcdir)/include
+ noinst_LTLIBRARIES = libcontrol.la
+ if SUNXI_MIN
+ SRC_FILES = ctrlmisc.c \
+-              static.c button.c progressbar.c
++              static.c button.c progressbar.c edit.c listbox.c trackbar.c
+ else
+ SRC_FILES = ctrlmisc.c \
+               static.c button.c edit.c listbox.c progressbar.c \
